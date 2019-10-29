@@ -22,12 +22,27 @@ public class HTMLChecker
       try (Scanner in = new Scanner(new File(filename)))
       {
          // Your code goes here
-         Stack 
-         while (in.hasNext) {
-             
+         String t;
+         Stack stuff = new Stack();
+         while (in.hasNext()) {
+             t = in.next();
+             if (t.charAt(0) == '<') {
+                if((t.charAt(1) == '/') && stuff.peek().equals(t.substring(2,t.length()-1))) {
+                     stuff.pop();
+                }
+                else {
+                    stuff.push(t.substring(1,t.length()-1));
+                }
+             }
+             System.out.println(stuff);
          }
          
-
+         if (stuff.size() == 0) {
+             System.out.println("balanced");
+         }
+         else {
+             System.out.println("not balanced");
+         }
 
 
 
