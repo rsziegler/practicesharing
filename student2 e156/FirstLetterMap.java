@@ -18,7 +18,10 @@ public class FirstLetterMap
       {
 
          // Create your map here
-         ...
+         TreeMap<Character, TreeSet<String>> map = new TreeMap<>();
+         for (char c = 'a'; c<='z'; c++) {
+             map.put(c, new TreeSet<String>());
+         }
 
          while (in.hasNext())
          {
@@ -27,14 +30,16 @@ public class FirstLetterMap
 
             // Update the map here
             // Modify Worked Example 15.1
-            . . .
+            map.get(c).add(word);
 
 
          }
 
          // Print the map here in this form
          // a: [a, able, aardvark]
-         . . .
+         for (char c : map.keySet()) {
+             System.out.println(c + ": " + map.get(c));
+         }
       }
       catch (FileNotFoundException e)
       {
